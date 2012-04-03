@@ -1,0 +1,48 @@
+body.bp {
+  ul.comments {
+    @include no-bullets();
+    padding: 0;
+    
+    li {
+      @include clearfix();
+      margin-bottom: 10px;
+      padding: 5px 10px 5px 5px;
+      &:hover {
+        background: #f9f9f9;
+        .actions {
+          display:block;
+        }
+        .meta {
+          color: #888;
+        }
+      }
+      
+      .image {
+        float:left;
+        margin-right: 10px;
+        width: 56px;
+        height: 56px;
+        img {
+          width: 50px;
+          height: 50px;
+          border: 3px solid black;
+        }
+      }
+      .meta {
+        font-weight: bold;
+        color: #aaa;
+        span.star_blue {
+          color: #1191bb;
+        }
+      }
+      .text {
+        font-size: 120%;
+        margin-left: 66px;
+      }
+      .actions {
+        float:right;
+        display:none;
+      }
+    }
+  }
+}

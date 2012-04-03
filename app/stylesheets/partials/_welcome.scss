@@ -1,0 +1,53 @@
+body.bp {
+  #welcome {
+		.left {
+			@include column(14);
+			@include append(0);
+		}
+		
+		.right {
+			@include column(6, true);
+			form {
+			  width: 220px;
+			  input[type="text"], input[type="password"] {
+			    width: 206px;
+			  }
+			}
+		}
+		
+		h2 {
+			margin: 0px;
+			margin-bottom: 0.25em;
+			color: #444;
+			font-weight: bold;
+			@include text-shadow(none);
+			font-size: 30px;
+			line-height: 30px;
+			img {
+			  vertical-align: top;
+			}
+		}
+		#new_user {
+		  margin:0;
+		}
+		.description {
+			margin: 30px 0;
+			font-size: 25px;
+		}
+    
+    div.gallery {
+      a {
+        width: 150px;
+        height: 150px;
+        display: block;
+        float: left;        
+        border: 7px solid black;
+        margin-right: 10px;
+      }
+      a img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}

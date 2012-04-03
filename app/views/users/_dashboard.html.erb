@@ -1,0 +1,28 @@
+<div id="dashboard">
+  <h2>Dashboard für <%= current_user.full_name %></h2>
+  
+  <div id="main">
+    <h3>Messages</h3>
+    <ul>
+    <% current_user.messages.newest.each do |message| %>
+      <li>
+        <div class="entry-description"><%= message.teaser %></div>
+        <div class="entry-meta"><%= link_to pluralize(message.comments.count, "Kommentar", "Kommentare"), message_path(message) %></div>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <% if current_user.company %>
+  <div id="sidebar">
+    <div>
+      <h3>Websites</h3>
+      <ul>
+      <% current_user.company.websites.claimed.each do |website| %>
+        <li><%= link_to website.full_title, website %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>  
+  <% end %>
+</div>

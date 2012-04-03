@@ -1,0 +1,31 @@
+<%= form_for(@message, :format => params[:format]) do |f| %>
+  <% if @message.errors[:base].any? %>
+  <div class="error_explanation">
+    <ul>
+      <% @message.errors[:base].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <%= f.hidden_field :url, :value => (params[:url] ? params[:url] : (session[:url] ? session[:url] : @website.url)) %>
+  <%= f.hidden_field :website_email, :value => (@website ? @website.email : (params[:website_email]||session[:website_email])) %>
+
+  <div class="field">
+    <%= f.label :msg_type, "Worum geht es?" %>
+    <%= f.select :msg_type, ["Melde ein Problem", "Hilfe benötigt", "Gib Feedback", "Sag was nettes"] %>
+  </div>
+  <div class="field">
+    <%= f.label :text, "Nachricht" %>
+    <%= f.text_area :text %>
+  </div>
+  <% unless current_user %>
+  <div class="field">
+    <%= f.label :email, "E-Mail" %>
+    <%= f.text_field :email, :value => session[:email] %>
+  </div>
+  <% end %>  
+  <div class="actions">
+    <%= f.submit "Abschicken" %>
+  </div>
+<% end %>

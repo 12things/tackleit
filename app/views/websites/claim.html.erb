@@ -1,0 +1,20 @@
+<h2>Eigentümerschaft von <%= @website.host %> bestätigen</h2>
+
+<% if @website.new_record? %>
+<p>
+  Es ist eine neue Website. Bitte leg diese zuerst an.
+</p>
+<p>
+  <%= link_to "Webseite anlegen", new_website_path, :class => "button special" %>
+</p>
+<% else %>
+<p>
+  Folgende MicroId muss im Quellcode der Website zu finden sein:<br/>
+  <b><%= @website.microid(current_user, true) %></b>
+</p>
+<p>
+  Kopiere einfach folgenden Code in den HEAD-Bereich der Website:<br/>
+  <input id="microid" type="text" size="110" value="<%= @website.microid_tag current_user %>" onclick="$('microid').select();">
+</p>
+<%= link_to "Bestätigen", verify_website_path(@website), :method => :post, :class => "button positive" %>  
+<% end %>

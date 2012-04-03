@@ -1,0 +1,20 @@
+<p>
+  Hallo,
+</p>
+
+<p>
+  es wurde ein neues Problem für die Website <%= link_to @website.full_title, website_url(@website) %> gemeldet:
+</p>
+
+<p>
+  <strong><%= @message.msg_type %></strong><br>
+  <%= raw @message.text.gsub(/\n/, '<br>') %>
+</p>
+
+<p>
+  <%= link_to 'Message', message_url(@message) %><% unless @message.user.email.blank? %> von <%= mail_to @message.user.email %><% end %>
+</p>
+
+<p>
+  tackle it!
+</p>

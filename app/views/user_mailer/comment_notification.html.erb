@@ -1,0 +1,20 @@
+<p>
+  Hallo,
+</p>
+
+<p>
+  es gibt einen neuen Kommentar zu deiner Message zu der Website <%= link_to @website.full_title, website_url(@website) %>:
+</p>
+
+<p>
+  <strong<%= ' style="color:#1191bb;"' if @comment.employee? @comment.user %>>Kommentar von <%= 'Mitarbeiter ' if @comment.employee? @comment.user %><%= @comment.user.full_name %></strong><br>
+  <%= raw @comment.text.gsub(/\n/, '<br>') %>
+</p>
+
+<p>
+  <%= link_to 'Message', message_url(@message) %><% unless @message.user.email.blank? %> von <%= mail_to @message.user.email %><% end %>
+</p>
+
+<p>
+  tackle it!
+</p>

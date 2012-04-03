@@ -1,0 +1,28 @@
+<% if current_user %>
+  <%= render 'dashboard' %>
+<% else %>
+<div id="welcome">
+  <div class="left">
+		<h2>tackle it <%= image_tag 'phonetics.png' %></h2>
+
+		<div>engl. für: etwas lösen, ein Problem anpacken</div>
+		
+		<p class="description">
+		  <strong>tackle it</strong> ist eine simpler Service, um <strong>Probleme</strong> mit einer Website zu <strong>melden</strong>
+		  oder auf sie zu <strong>reagieren</strong>. <em>just feedback!</em>
+		</p>
+		
+		<div class="gallery">
+		  <%= link_to(image_tag('detail_thumb.png'), '/images/topic_detail.jpg', {:rel => 'lightbox[screenshots]', :title => "Einträge"}) %>
+		  <%= link_to(image_tag('associations_thumb.png'), '/images/associations.jpg', {:rel => 'lightbox[screenshots]', :title => "Assoziationen"}) %>
+		  <%= link_to(image_tag('overview_thumb.png'), '/images/topics_overview.jpg', {:rel => 'lightbox[screenshots]', :title => "Themenübersicht"}) %>
+		</div>
+	</div>
+	
+	<div class="right">
+		<h2>Registrierung</h2>
+		<p>Hier kannst du dich registrieren:</p>
+		<%= render "form" %>
+	</div>
+</div>
+<% end %>

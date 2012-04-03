@@ -1,0 +1,37 @@
+<% if @user.errors.any? %>
+  <div class="error_explanation">
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :email, 'E-Mail' %>
+    <%= f.text_field :email, :disabled => !@user.new_record? %>
+  </div>
+  
+  <% unless @user.new_record? %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <% end %>
+    
+  <div class="field">
+    <%= f.label :password, 'Passwort' %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, 'Passwort-Wiederholung' %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit @user.new_record? ? 'Anmelden' : 'Speichern' %>
+  </div>
+<% end %>

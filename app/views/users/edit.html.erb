@@ -1,0 +1,84 @@
+<h2>Name oder Passwort ändern</h2>
+
+<%= render 'form' %>
+
+<% unless @user.employers.empty? %>
+<div id="employers">
+  <h3>Deine Firmen</h3>
+  <ul class="actionlist">
+    <% @user.employments.each do |employment| %>
+      <li id="my_employment_<%= employment.id %>"><%= employment.company.name %>&nbsp;&nbsp;<%= link_to 'Dich als Mitarbeiter entfernen', employment, :confirm => 'Bist du sicher?', :method => :delete, :class => 'icon delete', :remote => true %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<% if @user.company %>
+<h2><%= @user.company.name %></h2>
+
+<% unless @user.company.websites.empty? %>
+<div id="websites">
+  <h3>Überprüfte Websites</h3>
+  <ul class="actionlist">
+    <% @user.company.websites.each do |website| %>
+      <li id="website_<%= website.id %>"><%= website.full_title %>&nbsp;&nbsp;<%= link_to 'Löschen', website, :confirm => 'Bist du sicher?', :method => :delete, :class => 'icon delete', :remote => true %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h3>Website überprüfen</h3>
+<%= form_tag(claim_websites_path) do |f| %> 
+  <div class="field">
+    <%= label_tag :host, "Website-Adresse" %>
+    <%= text_field_tag :host %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Überprüfen" %>
+  </div>
+<% end %>
+
+
+<% unless @user.company.employments.empty? %>
+<div id="employees">
+  <h3>Mitarbeiter</h3>
+  <ul class="actionlist">
+    <% @user.company.employments.each do |employment| %>
+      <li id="employment_<%= employment.id %>"><%= employment.user.full_name %>&nbsp;&nbsp;<%= link_to 'Mitarbeiter entfernen', employment, :confirm => 'Bist du sicher?', :method => :delete, :class => 'icon delete', :remote => true %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<h3>Mitarbeiter hinzufügen</h3>
+  <%= form_tag(create_multiple_employments_path) do %>
+    <%= hidden_field_tag :company_id, @user.company.id %>
+  
+    <div class="field">
+      <%= label_tag :emails, "E-Mails mit Komma getrennt" %>
+      <%= text_area_tag :emails %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Hinzufügen" %>
+    </div>
+  <% end %>
+
+
+<h3><%= @user.company.name %> löschen</h3>
+<p>
+  Du möchtest den Firmen-Account kündigen? Alle Websites, Nachrichten und Kommentare gehen<br/>
+  unwiderruflich verloren. Mitarbeiter werden entfernt und deren Accounts in normale <br/>
+  Benutzer-Accounts gewandelt.
+</p>
+<p>
+  <%= link_to "Firma löschen", @user.company, :class => "button negative",:confirm => 'Bist du sicher?', :method => :delete %>
+</p>
+<% else %>
+<h2>Firma anlegen</h2>
+<p>Hier kannst du einen Firmen-Account anlegen, mit dem Du Websites claimen kannst.</p>
+<p>
+  <%= link_to "Firma anlegen", new_company_path, :class => "button special" %>
+</p>
+<% end %>

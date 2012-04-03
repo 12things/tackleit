@@ -1,0 +1,11 @@
+Hallo,
+
+es wurde ein neues Problem für die Website <%= @website.full_title %> gemeldet:
+
+<%= @message.msg_type %>
+<%= @message.text %>
+
+Zur Message<% unless @message.user.email.blank? %> von <%= @message.user.email %><% end %>
+<%= message_url(@message) %>
+
+tackle it!

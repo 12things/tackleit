@@ -1,0 +1,20 @@
+<% if @website.verified? %>
+<h2><%= @website.title %></h2>
+<p>
+  Die Eigentümerschaft der Website wurde erfolgreich überprüft.
+</p>
+<% else %>
+<h2>Überprüfung fehlgeschlagen</h2>
+<p>
+  <span class="icon warning"><b>Die Eigentümerschaft der Website konnte nicht überprüft werden.</b></span><br/>
+  <%= flash[:notice] %>
+</p>
+
+<p>
+  Stelle bitte sicher, dass sich folgender Code im HEAD-Bereich der Webseite befindet:<br/>
+  <input id="microid" type="text" size="110" value="<%= @website.microid_tag current_user %>" onclick="$('microid').select();">
+</p>
+<%= link_to "Nochmal versuchen", verify_website_path(@website), :method => :post, :class => "button positive" %>
+<%= link_to "Abbrechen", edit_user_path(current_user), :class => "button negative" %>
+
+<% end %>

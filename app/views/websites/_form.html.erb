@@ -1,0 +1,27 @@
+<%= form_for(@website) do |f| %>
+  <% if @website.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @website.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, "Titel" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "E-Mail zur Benachrichtigung" %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :host, 'Host ohne http://' %>
+    <%= f.text_field :host %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Speichern" %>
+  </div>
+<% end %>

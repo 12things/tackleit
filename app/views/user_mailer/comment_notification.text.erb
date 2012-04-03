@@ -1,0 +1,11 @@
+Hallo,
+
+es gibt einen neuen Kommentar zu deiner Message zu der Website <%= @website.full_title %>:
+
+Kommentar von <%= 'Mitarbeiter ' if @comment.employee? @comment.user %><%= @comment.user.full_name %>
+<%= raw @comment.text %>
+
+Zur Message
+<%= message_url(@message) %><% unless @message.user.email.blank? %> von <%= @message.user.email %><% end %>
+
+tackle it!

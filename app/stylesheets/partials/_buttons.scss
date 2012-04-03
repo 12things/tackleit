@@ -1,0 +1,133 @@
+@import "compass/utilities/general/float";
+@import "compass/css3/gradient";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/transform";
+@import "blueprint/buttons";
+
+// Use the following HTML code to place the buttons on your site:
+//
+// <button type="submit" class="button positive">
+//   <img src="css/blueprint/plugins/buttons/icons/tick.png" alt=""/> Save
+// </button>
+//
+// <a class="button" href="/password/reset/">
+//   <img src="css/blueprint/plugins/buttons/icons/key.png" alt=""/> Change Password
+// </a>
+//
+// <a href="#" class="button negative">
+//   <img src="css/blueprint/plugins/buttons/icons/cross.png" alt=""/> Cancel
+// </a>
+html body.bp {
+  a.button,
+  button,
+  form input[type="submit"] {
+    @include button-button();
+    padding: 4px 10px;
+    outline: none;
+    color: red;
+    $top: #f5f5f5;
+    $bottom: #e5e5e5;
+
+    border-color: $bottom;
+    background-color: $top;
+    @include linear-gradient(color-stops($top, $bottom));
+
+    @include border-radius;
+    @include text-shadow;
+    &:hover {
+      background-color: $bottom;
+      @include linear-gradient(color-stops($bottom, $top));
+    }
+    &:active {
+      color: $loud-color;
+      border-color: $dark-pale-color;
+      background-color: $dark-pale-color;
+      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+    }
+  }
+  
+  a.button {
+    padding-top: 4px;
+    padding-bottom: 5px;
+    line-height: 17px;
+  }
+
+  form input[type="submit"],
+  a.positive, 
+  button.positive {
+    $top: #b5eb00;
+    $bottom: #6fbf00;
+    
+    padding: 4px 10px !important;
+    color: #fff;
+    
+    border-color: $bottom;
+    background-color: $top;
+    @include linear-gradient(color-stops($top, $bottom));
+    @include text-shadow(rgba(0,0,0,0.5));
+    &:hover {
+      background-color: $bottom;
+      @include linear-gradient(color-stops($bottom, $top));
+    }    
+    &:active {
+      outline: none;
+      border-color: $dark-pale-color;
+      background-color: $dark-pale-color;
+      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+    }
+  }
+
+  a.negative,
+  button.negative {
+    $top: #fd0000;
+    $bottom: #dc0100;
+    color: #fff;
+    
+    outline: none;
+    border-color: $bottom;
+    background-color: $top;
+    @include linear-gradient(color-stops($top, $bottom));
+    @include text-shadow(rgba(0,0,0,0.5));
+    &:hover {
+      background-color: $bottom;
+      @include linear-gradient(color-stops($bottom, $top));
+    }
+    &:active {
+      border-color: $dark-pale-color;
+      background-color: $dark-pale-color;
+      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+    }
+  }
+
+  a.special,
+  button.special {
+    $top: #ffee66;
+    $bottom: #ffaa22;
+    
+    color: #333;
+    
+    border-color: $bottom;
+    background-color: $top;
+    @include linear-gradient(color-stops($top, $bottom));
+    @include text-shadow(rgba(255,255,255, 0.7));
+    &:hover {
+      background-color: $bottom;
+      @include linear-gradient(color-stops($bottom, $top));
+    }
+    &:active {
+      outline: none;
+      border-color: $dark-pale-color;
+      background-color: $dark-pale-color;
+      @include linear-gradient(color-stops($pale-color, $dark-pale-color));      
+    }
+  }
+  
+  a.feedback {
+    position: fixed;
+    left:-30px;
+    top: 240px;
+    z-index: 1000;
+    @include rotate(270deg);
+  }
+}

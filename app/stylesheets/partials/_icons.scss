@@ -1,0 +1,43 @@
+body.bp {  
+  a.icon, span.icon {
+    padding: 2px 0 2px 20px;
+    line-height: 16px;
+
+    &.cancel {
+      background: sprite-image('../images/cancel.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.comments {
+      background: sprite-image('../images/comments.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.delete {
+      background: sprite-image('../images/delete.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.edit {
+      background: sprite-image('../images/edit.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.minus {
+      background: sprite-image('../images/minus.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.plus {
+      background: sprite-image('../images/add.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.no {
+      background: sprite-image('../images/no.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.yes {
+      background: sprite-image('../images/yes.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.settings {
+      background: sprite-image('../images/cog.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.power_off {
+      background: sprite-image('../images/power_off.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.warning {
+      background: sprite-image('../images/warning.png', 0px, 1px, 20px) no-repeat;
+    }
+    &.star_blue {
+      background: sprite-image('../images/star_blue.png', 0px, 1px, 20px) no-repeat;
+    }
+  }
+}

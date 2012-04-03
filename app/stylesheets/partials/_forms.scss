@@ -1,0 +1,95 @@
+body.bp {  
+  #microid {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    padding: 3px 6px;
+    background: #f9f9f9;
+    @include border-radius(2px);
+  }
+  div.error_explanation {
+    @include clearfix;
+    ul {
+      width: 372px;
+      background: #ffcccc;
+      padding: 10px 20px;
+      border: 1px solid red;
+      @include border-radius(2px);
+    }    
+  }
+  
+  &.widget form {
+    margin: 0 auto;
+  }
+  
+  form {
+    width: 414px;
+
+    fieldset {
+      legend {
+        font: bold 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+        padding: 4px;
+      }
+      border-top: 1px dashed #aaa;
+      margin-top: 15px;
+      padding-bottom: 5px;
+    }
+    
+    div.field {
+      margin-bottom: 0.5em;
+      label {
+        &.checkbox {
+          display:inline;
+        }
+        padding-left: 4px;
+        display: block;
+        font-weight: bold;
+        color: #999;
+      }
+      input[type="text"], input[type="password"], textarea {
+        font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        padding: 3px 6px;
+        background: #f9f9f9;
+        width: 400px;
+        @include border-radius(2px);
+      }
+      textarea {
+        height: 61px;
+        padding-right: 0;
+        width: 406px;
+        outline: medium none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        white-space: pre-wrap;    
+        word-wrap: break-word;
+      }      
+    }
+    
+    div.field_with_errors input[type="text"], div.field_with_errors input[type="password"], div.field_with_errors textarea {
+      border-color: red;
+      background: #ffcccc;
+    }
+  
+    div.actions {
+      text-align: right;
+      position: relative;
+      img.loading {
+        position: absolute;
+        right: -45px;
+        top: 5px;
+      }
+      input {
+        margin-right: 0;
+      }
+      span.info {
+        font-size: 90%;
+        position: relative;
+        top: 2px;
+        margin-right: 10px;
+        @include text-shadow(0, 1px, 0, rgba(255,255,255,0.9));
+      }
+    }    
+  }
+}

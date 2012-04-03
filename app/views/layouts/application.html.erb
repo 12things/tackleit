@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:og="http://ogp.me/ns#">
+<head>
+  <title>tackle it! - just feedback</title>
+  <%= stylesheet_link_tag 'screen', :media => 'screen' %>
+  <%= stylesheet_link_tag 'lightbox', :media => 'screen' %>
+  <!-- [if IE]
+  <%= stylesheet_link_tag 'ie', :media => 'screen' %>
+  -->
+  <%= javascript_include_tag :defaults, 'builder', 'lightbox', :cache => 'tackleit' %>
+  
+  <%= csrf_meta_tag %>
+  <meta name="description" content="tackle it ist eine simpler Service, um Probleme mit einer Website zu melden oder auf sie zu reagieren" />
+	<meta name="keywords" content="feedback,bugs,tasks,fehler,service,probleme,problems,rückmeldung" />
+	<meta http-equiv="reply-to" content="feedback@tackleit.de" />
+	
+	<meta property="og:title" content="tackle it!" />
+  <meta property="og:url" content="http://tackleit.de/" />
+  <meta property="og:email" content="feedback@tackleit.de" />
+  <meta property="og:type" content="website" />
+  <meta content="mailto+http:sha1:ae07d88de67a32e9e08686b204f5f81d37fa795f" name="microid">
+</head>
+<body class="bp">
+
+  <div id="container" class="noshowgrid">
+  	<div id="header">
+  		<h1><%= link_to('tackle it!', root_path) %></h1>
+
+  		<div id="controls">
+        <% if current_user %>
+          Hallo <%= current_user.full_name %> | <%= link_to("Settings", edit_user_path(current_user), :class => "icon settings") %> | 
+          <%= link_to 'Logout', user_session_path(current_user), :method => :delete, :class => "icon power_off" %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path %> | <%= link_to 'Registrierung', new_user_path %>
+        <% end %>
+        | <%= link_to 'Impressum', imprint_path %>
+  		</div>
+  	</div>
+	
+  	<div id="wrapper">
+  		<div id="content">
+  		  <% if notice %><div id="notice"><%= raw(notice) %></div><% end %>
+        <%= yield %>
+        
+        <br class="clear" />
+      </div>
+    </div>
+  </div>
+  <% if RAILS_ENV=='production' %>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-15353144-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  </script>
+  <% end %>
+</body>

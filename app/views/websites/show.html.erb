@@ -1,0 +1,18 @@
+<h1>Ist etwas auf "<%= @website.host %>" kaputt?</h1>
+
+<%= render 'messages/form' %>
+
+<h2>Andere Probleme</h2>
+
+<ul id="bugs">
+<% @website.messages.newest.each_with_index do |message,i| %>
+  <li class="<%= 'nospacing' if (i+1)%4 == 0 %>">
+    <div class="bug_container">
+      <h3><%= link_to message.msg_type, message_path(message) %></h3>
+      <div class="bug_text">
+        <%= message.text.truncate(130) %>
+      </div>
+    </div>    
+  </li>
+<% end %>
+</ul>

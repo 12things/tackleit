@@ -1,0 +1,44 @@
+<%= link_to 'Zurück zur Übersicht', @message.website, :class => "right" %>
+
+<h2><%= @message.msg_type %></h2>
+<p class="huge">
+  <%= @message.text %>
+</p>
+
+<p>
+  <b>Hier trat der Fehler auf:</b>
+  <%= link_to @message.get_url, @message.get_url, :target => '_blank' %>
+</p>
+
+<h3>Kommentare</h3>
+
+<% unless @message.comments.empty? %>
+  <ul class="comments">
+  <% @message.comments.chronological.each do |comment| %>
+    <li id="comment_<%= comment.id %>">
+      <div class="image">
+        <%= image_tag(gravatar_url_for(comment.user.email)) %>
+      </div>
+      <div class="actions">
+        <% if comment.user == current_user %>
+          <%= link_to 'Löschen', comment, :confirm => 'Bist du sicher?', :method => :delete, :class => 'icon delete', :remote => true %>
+        <% end %>
+      </div>
+      <div class="meta">
+        <% if comment.employee? comment.user %>
+          <span class="icon star_blue" title="<%= comment.user.full_name %> ist ein Mitarbeiter von <%= comment.message.website.company.name %>">
+            <%= comment.user.full_name %>
+          </span> vor <%= time_ago_in_words(comment.created_at) %> 
+        <% else %>
+          <%= comment.user.full_name %> vor <%= time_ago_in_words(comment.created_at) %> 
+        <% end %>
+      </div>
+      <div class="text">
+        <%= raw comment.text.gsub(/\n/, '<br />') %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= render 'comments/form' %>

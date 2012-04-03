@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  messages_count: 1
+  email: MyString
+  host: MyString
+
+two:
+  title: MyString
+  messages_count: 1
+  email: MyString
+  host: MyString
